@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="profile-container">
+    <h2>Tu Perfil</h2>
+
+    <!-- Mensaje de éxito -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="message {{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="profile-forms">
+        <!-- Formulario de usuario -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Actualizar información del usuario</legend>
+                {{ u_form.as_p }}
+            </fieldset>
+
+            <!-- Formulario de perfil -->
+            <fieldset>
+                <legend>Actualizar foto de perfil</legend>
+                {{ p_form.as_p }}
+            </fieldset>
+
+            <!-- Botón para guardar cambios -->
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </form>
+    </div>
+
+    <!-- Vista previa de la imagen de perfil -->
+    <div class="profile-image">
+        <h3>Tu Foto de Perfil</h3>
+        <img src="{{ user.profile.image.url }}" alt="Foto de perfil" class="img-thumbnail" style="max-width: 150px;">
+    </div>
+</div>
+{% endblock %}

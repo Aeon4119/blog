@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <article>
+        <h1>{{ object.title }}</h1>
+        <h4 class="text-muted">{{ object.subtitle }}</h4>
+        {% if object.image %}
+            <img src="{{ object.image.url }}" class="img-fluid my-3" alt="{{ object.title }}">
+        {% endif %}
+        <p class="mt-4">{{ object.content }}</p>
+        
+        {% if object.author == user %}
+            <div class="mt-3">
+                <a href="{% url 'blog-update' object.pk %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'blog-delete' object.pk %}" class="btn btn-danger">Eliminar</a>
+            </div>
+        {% endif %}
+    </article>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Inicio - Blog de Películas y Series{% endblock %}
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Bienvenidos al Blog de Películas y Series</h1>
+    <p class="lead">Descubre las mejores reseñas y recomendaciones del mundo del cine y la televisión</p>
+    <hr class="my-4">
+    <p>Únete a nuestra comunidad y comparte tus opiniones</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'blog-list' %}" role="button">Ver Reseñas</a>
+</div>
+{% endblock %}
