@@ -17,7 +17,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'your-secret-key-here'
 
-DEBUG = True
+DEBUG = False
+ALLOWED_HOSTS = ['danielmoreno41.pythonanywhere.com']
+
 
 ALLOWED_HOSTS = []
 
@@ -90,6 +92,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
+STATI_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -97,3 +100,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'  # Redirige a la página principal después de iniciar sesión
 LOGIN_REDIRECT_URL = 'home'
+
+try:
+    from settings_dev import *
+except ModuleNotFoundError:
+    pass
